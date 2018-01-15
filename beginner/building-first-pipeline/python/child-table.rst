@@ -103,7 +103,7 @@ Let's insert a new session into `Session` table
   >>> session
   *mouse_id    *session_date  experiment_set experimenter
   +----------+ +------------+ +------------+ +------------+
-  0            2017-05-15     0              Edgar Y. Waker
+  1            2017-05-15     0              Edgar Y. Waker
    (1 tuples)
 
 Using a valid ``mouse_id``, we were able to successfully insert a new session. Now what would happen
@@ -151,30 +151,30 @@ Deleting dependent entries
 Remember the ``delete`` method back from :ref:`python-delete-entries`? Let's see what happens 
 if we try to delete entries in the ``Mouse`` table that have dependent entries in ``Session``.
 
-Recall that ``Session`` table has an entry that points to mouse with ``mouse_id=0``:
+Recall that ``Session`` table has an entry that points to mouse with ``mouse_id=1``:
 
 .. code-block:: python
   
   >>> session
   *mouse_id    *session_date  experiment_set experimenter
   +----------+ +------------+ +------------+ +------------+
-  0            2017-05-15     0              Edgar Y. Waker
+  1            2017-05-15     0              Edgar Y. Waker
    (1 tuples)
 
 Let's first try deleting an unrelated mouse entry:
 
 .. code-block:: python
 
-  >>> (mouse & 'mouse_id = 1').delete()   # delete mouse with ID of 1
+  >>> (mouse & 'mouse_id = 2').delete()   # delete mouse with ID of 2
   The contents of the following tables are about to be deleted:
   `dj_tutorial`.`mouse` (1 tuples)
   Proceed? [yes, No]:
 
-The ``delete`` method warns you that you will be deleting one entry from ``Mouse``, as expected. Hit Enter to cancel the deletion, and now let's see what happens when we try to delete ``mouse_id=0``:
+The ``delete`` method warns you that you will be deleting one entry from ``Mouse``, as expected. Hit Enter to cancel the deletion, and now let's see what happens when we try to delete ``mouse_id=1``:
 
 .. code-block:: python
 
-  >>> (mouse & 'mouse_id = 0').delete()   # delete mouse with ID of 0
+  >>> (mouse & 'mouse_id = 1').delete()   # delete mouse with ID of 1
   The contents of the following tables are about to be deleted:
   `dj_tutorial`.`mouse` (1 tuples)
   `dj_tutorial`.`session` (1 tuples)
