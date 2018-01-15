@@ -94,7 +94,7 @@ Let's insert a new session into `Session` table
 .. code-block:: python
 
   >>> data = {
-        'mouse_id': 0,
+        'mouse_id': 1,
         'session_date': '2017-05-15',
         'experiment_setup': 0,
         'experimenter': 'Edgar Y. Walker'
